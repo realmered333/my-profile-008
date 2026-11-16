@@ -1,13 +1,53 @@
-// 1. ปุ่มทักทาย
-const greetingBtn = document.getElementById('greetingBtn');
+// --- ส่วนที่ 1: ระบบข้อความต้อนรับผู้เข้าชม (Personalized Welcome) ---
+let visitorName = prompt("กรุณากรอกชื่อผู้เข้าชมเว็บไซต์ของคุณ:");
 const greetingMessage = document.getElementById('greetingMessage');
+
+if (visitorName && visitorName.trim() !== "") {
+    if (greetingMessage) {
+        greetingMessage.textContent = `ยินดีต้อนรับคุณ ${visitorName} เข้าสู่เว็บไซต์ Portfolio ของฉัน`;
+    }
+} else {
+    if (greetingMessage) {
+        greetingMessage.textContent = "ยินดีต้อนรับผู้เยี่ยมชมเข้าสู่เว็บไซต์ Portfolio ของฉัน";
+    }
+}
+
+// 1. ปุ่มทักทาย (เดิม)
+const greetingBtn = document.getElementById('greetingBtn');
 if (greetingBtn && greetingMessage) {
     greetingBtn.addEventListener('click', function () { 
         greetingMessage.textContent = "สวัสดี สมาชิก";
     });
 }
 
-// 2. ดักจับทุกปุ่มที่มีคลาส .sparkle-btn (ไม่ว่าจะอยู่ตรงเมนูหรือโลโก้)
+// --- ส่วนที่ 2: ระบบประมาณการค่าบริการพัฒนาเว็บไซต์ (Website Cost Estimator) ---
+const estimateBtn = document.getElementById('estimateBtn');
+const pagesResult = document.getElementById('pagesResult');
+const costResult = document.getElementById('costResult');
+
+if (estimateBtn) {
+    estimateBtn.addEventListener('click', function () {
+        let inputPages = prompt("กรุณากรอกจำนวนหน้าที่ต้องการพัฒนาเว็บไซต์:");
+        
+        if (inputPages !== null) {
+            let numberOfPages = Number(inputPages);
+            
+            // ตรวจสอบว่าเป็นตัวเลขที่ถูกต้องและมากกว่า 0 หรือไม่
+            if (!isNaN(numberOfPages) && numberOfPages > 0) {
+                let pricePerPage = 500;
+                let totalPrice = numberOfPages * pricePerPage;
+                
+                // แสดงผลลัพธ์บนหน้าเว็บไซต์
+                pagesResult.textContent = numberOfPages;
+                costResult.textContent = totalPrice.toLocaleString(); // ใส่คอมม่าคั่นหลักพันเพื่อความสวยงาม
+            } else {
+                alert("กรุณากรอกข้อมูลเป็นตัวเลขจำนวนเต็มบวกที่ถูกต้องครับ");
+            }
+        }
+    });
+}
+
+// 2. ดักจับทุกปุ่มที่มีคลาส .sparkle-btn (เดิม)
 document.querySelectorAll('.sparkle-btn').forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault(); // ป้องกันไม่ให้เบราว์เซอร์กระโดดทันที
@@ -32,7 +72,7 @@ document.querySelectorAll('.sparkle-btn').forEach(button => {
     });
 });
 
-// ฟังก์ชันสำหรับสร้างประกายดาว
+// ฟังก์ชันสำหรับสร้างประกายดาว (เดิม)
 function createSparkle(x, y) {
     const sparkle = document.createElement('span');
     sparkle.classList.add('sparkle');
