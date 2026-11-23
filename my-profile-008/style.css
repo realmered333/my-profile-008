@@ -1,168 +1,362 @@
+/* ===================================================
+   Design System & Theme Variables (Light & Dark Mode)
+   =================================================== */
+:root {
+    /* Base typography */
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Prompt", "Sarabun", sans-serif;
 
+    /* Light Mode (Default) - สว่าง สะอาด อ่านง่าย สบายตา */
+    --bg-page: #fbf7f2;
+    --bg-card: #ffffff;
+    --bg-header: #ffffff;
+    --bg-footer: #f7ede0;
+    
+    --text-primary: #2d1e10;
+    --text-secondary: #5a4532;
+    --text-muted: #806b57;
+    --text-heading: #693b01;
+    
+    --card-border: #edd9c4;
+    --card-shadow: 0 8px 24px rgba(85, 50, 15, 0.08);
+    --header-shadow: 0 2px 10px rgba(85, 50, 15, 0.06);
+
+    --motto-bg: #faebd7;
+    --motto-border: #b16903;
+    --motto-text: #452b0b;
+
+    --project-bg: #fff8f0;
+    --project-border: #f0cca3;
+    --project-title: #693b01;
+    --project-desc: #4a3826;
+
+    --btn-bg: #b96e12;
+    --btn-hover: #693b01;
+    --btn-text: #ffffff;
+
+    --input-bg: #ffffff;
+    --input-border: #d6c0ab;
+    --input-text: #2d1e10;
+    --input-focus: #b96e12;
+
+    --theme-btn-bg: #f4e8d9;
+    --theme-btn-text: #4a341e;
+    --theme-btn-border: #e0caa5;
+
+    --error-color: #d32f2f;
+    --success-bg: #e8f5e9;
+    --success-border: #81c784;
+    --success-text: #1b5e20;
+
+    --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode - โทนเข้ม สบายสายตาในที่มืด ตัวหนังสือสว่างคมชัด */
+    --bg-page: #15120e;
+    --bg-card: #231c15;
+    --bg-header: #1b1610;
+    --bg-footer: #1b1610;
+
+    --text-primary: #f5ede4;
+    --text-secondary: #cfc1b2;
+    --text-muted: #a39282;
+    --text-heading: #f6be6c;
+
+    --card-border: #3d3023;
+    --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+    --motto-bg: #2d241c;
+    --motto-border: #f6be6c;
+    --motto-text: #faebd7;
+
+    --project-bg: #2d241c;
+    --project-border: #543f2c;
+    --project-title: #f6be6c;
+    --project-desc: #e3d7ca;
+
+    --btn-bg: #d88b26;
+    --btn-hover: #f5a947;
+    --btn-text: #ffffff;
+
+    --input-bg: #1a1510;
+    --input-border: #4f3d2e;
+    --input-text: #f5ede4;
+    --input-focus: #f6be6c;
+
+    --theme-btn-bg: #2d241c;
+    --theme-btn-text: #f6be6c;
+    --theme-btn-border: #543f2c;
+
+    --error-color: #ef5350;
+    --success-bg: #1e3827;
+    --success-border: #388e3c;
+    --success-text: #c8e6c9;
+}
+
+/* ===================================================
+   Global Resets & Base Styles
+   =================================================== */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box; 
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
+
 body {
-    font-family: sans-serif;
-    background: #995a11;
+    font-family: var(--font-family);
+    background-color: var(--bg-page);
+    color: var(--text-primary);
     margin: 0;
-    padding: 30px 16px;
-    color: rgb(252, 250, 250);
+    padding: 0 0 40px 0;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    line-height: 1.6;
 }
 
-.profile-card {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 30px;
-    background: #f2b66d;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(15, 39, 71, 0.12);
-    scroll-margin-top: 90px;
-}
-.photo {
-    max-width: 300px;
-    border-radius: 50%;
-}
-
-h1 {
-    color: #693b01;
-    text-align: center;
-}
-
-.profile-card {
-    line-height: 1.8;
-}
-
-.motto {
-    margin-top: 24px;
-    padding: 16px;
-    background: #af752d;
-    border-left: 5px solid #b16903;
-    border-radius: 8px;
-}
-
-button {
-    margin-top: 16px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    background: #b96e12;
-    color: aliceblue;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #693b01;
-}
-
-#message {
-    color: #b16303;
-    font-weight: bold;
-}
-
-
-
+/* ===================================================
+   Site Header & Navigation
+   =================================================== */
 .site-header {
-    background-color: #f2b66d ;
+    background-color: var(--bg-header);
     width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+    box-shadow: var(--header-shadow);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
     z-index: 100;
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 .header-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 16px 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .logo a {
-    font-size: 26px;
-    font-weight: bold;
-    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-heading);
     text-decoration: none;
     letter-spacing: 0.5px;
     display: inline-block;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color var(--transition-speed) ease;
 }
 
 .logo a:active {
     transform: scale(0.95);
 }
 
-
 .nav-menu {
     list-style: none;
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 24px;
 }
 
 .nav-menu li a {
     text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 500;
     display: inline-block;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 6px 4px;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .nav-menu li a:hover {
-    opacity: 0.85;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    color: var(--btn-bg);
+    transform: translateY(-1px);
 }
 
 .nav-menu li a:active {
-    transform: scale(0.93);
+    transform: scale(0.95);
 }
 
+/* ===================================================
+   Theme Switcher Button
+   =================================================== */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
 
-     
-* {
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--theme-btn-bg);
+    color: var(--theme-btn-text);
+    border: 1.5px solid var(--theme-btn-border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.25s ease;
+    margin-top: 0; /* override general button margin */
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--card-border);
+    color: var(--text-heading);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.theme-text {
+    letter-spacing: 0.3px;
+}
+
+/* ===================================================
+   Profile Card (About Section)
+   =================================================== */
+.profile-card {
+    max-width: 650px;
+    margin: 40px auto 30px;
+    padding: 36px 30px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    box-shadow: var(--card-shadow);
+    scroll-margin-top: 90px;
+    line-height: 1.9;
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.photo {
+    max-width: 220px;
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    border: 4px solid var(--btn-bg);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+    color: var(--text-heading);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.profile-card p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.profile-card p span {
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+.motto {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background-color: var(--motto-bg);
+    border-left: 5px solid var(--motto-border);
+    border-radius: 8px;
+    color: var(--motto-text);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.motto h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: var(--text-heading);
+}
+
+.motto p {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-style: italic;
 }
 
+/* ===================================================
+   Buttons & Interactive Elements
+   =================================================== */
+button {
+    margin-top: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
 
+button:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-1px);
+}
 
+button:active {
+    transform: scale(0.98);
+}
 
+.greetingBtn {
+    display: inline-block;
+}
+
+.greetingMessage {
+    margin-top: 14px;
+    color: var(--text-heading);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#message {
+    color: var(--text-heading);
+    font-weight: bold;
+}
+
+/* ===================================================
+   Main Container & Cards
+   =================================================== */
 .main-container {
     max-width: 900px;
-    width: 90%;
-    margin: 40px auto;
+    width: 92%;
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    flex: 1;
 }
-
 
 .card {
-    background-color: #f2b66d;
-    border: 1px solid #482a0d; 
-    border-radius: 16px;
-    padding: 30px 40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    scroll-margin-top: 100px;
-
+    background-color: var(--bg-card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 32px 36px;
+    box-shadow: var(--card-shadow);
+    scroll-margin-top: 90px;
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
-
 .card-title {
-    color: #f5f7fb; 
+    color: var(--text-heading);
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 20px;
+    border-bottom: 2px solid var(--card-border);
+    padding-bottom: 10px;
 }
-
 
 .skills-list {
     list-style-type: disc;
@@ -174,60 +368,199 @@ button:hover {
 
 .skills-list li {
     font-size: 16px;
-    color: #334155;
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
-
 .project-box {
-    background-color: #d88b26;
-    border: 1px solid #ffbb00; 
+    background-color: var(--project-bg);
+    border: 1px solid var(--project-border);
     border-radius: 12px;
-    padding: 24px 30px;
+    padding: 24px 28px;
+    transition: background-color var(--transition-speed) ease;
 }
 
 .project-title {
-    color: #6a4242;
-    font-size: 18px;
+    color: var(--project-title);
+    font-size: 19px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .project-desc {
-    color: #ffffff;
+    color: var(--project-desc);
     font-size: 15px;
     line-height: 1.6;
 }
 
+/* ===================================================
+   Contact Form Styles
+   =================================================== */
+.contact-box {
+    background-color: var(--project-bg);
+    border: 1px solid var(--project-border);
+    border-radius: 14px;
+    padding: 28px 30px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.contact-desc {
+    color: var(--project-desc);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.required-star {
+    color: var(--error-color);
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 1.5px solid var(--input-border);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color var(--transition-speed) ease;
+}
+
+.form-control:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(185, 110, 18, 0.2);
+}
+
+.form-control.is-invalid {
+    border-color: var(--error-color) !important;
+    background-color: rgba(239, 83, 80, 0.05);
+}
+
+.form-error {
+    font-size: 13px;
+    color: var(--error-color);
+    min-height: 18px;
+    display: block;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.contact-submit-btn {
+    align-self: flex-start;
+    padding: 12px 32px;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* Alert Notification Banner */
+.contact-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+    animation: fadeInSlide 0.3s ease-out;
+}
+
+.contact-alert.success {
+    background-color: var(--success-bg);
+    border: 1.5px solid var(--success-border);
+    color: var(--success-text);
+}
+
+.contact-alert.error {
+    background-color: rgba(239, 83, 80, 0.12);
+    border: 1.5px solid var(--error-color);
+    color: var(--error-color);
+}
+
+.contact-alert .alert-icon {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.contact-alert .alert-content {
+    flex: 1;
+}
+
+.contact-alert .alert-title {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.contact-alert .alert-text {
+    font-size: 14px;
+    margin: 0;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================================
+   Footer
+   =================================================== */
 .site-footer {
-    background-color: #f2b66d; 
-    color: #ffffff;
+    background-color: var(--bg-footer);
+    color: var(--text-muted);
     text-align: center;
-    padding: 25px 20px;
+    padding: 28px 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: auto;
-    scroll-margin-top: 90px;
+    margin-top: 50px;
+    border-top: 1px solid var(--card-border);
+    transition: background-color var(--transition-speed) ease;
 }
 
 .site-footer p {
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 14px;
 }
 
-
-
+/* ===================================================
+   Sparkle Animation (เดิม)
+   =================================================== */
 .sparkle {
     position: fixed;
     width: 20px;
     height: 20px;
-    background-color: #fffef9; 
+    background-color: #ffd166;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); /* ทรงดาว */
     pointer-events: none;
     z-index: 9999;
     animation: sparkle-anim 0.6s ease-out forwards;
-
-     scroll-margin-top: 90px; 
 }
 
 @keyframes sparkle-anim {
@@ -244,25 +577,62 @@ button:hover {
     }
 }
 
-
+/* ===================================================
+   Responsive Mobile Adjustments
+   =================================================== */
 @media (max-width: 768px) {
     .header-container {
-        padding: 15px 20px;
+        padding: 14px 18px;
+        flex-wrap: wrap;
+        gap: 12px;
     }
+
     .logo a {
         font-size: 20px;
     }
+
     .nav-menu {
-        gap: 15px;
+        gap: 14px;
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        padding-top: 6px;
+        border-top: 1px solid var(--card-border);
     }
+
     .nav-menu li a {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .theme-switch-wrapper {
+        order: 2;
+    }
+
+    .theme-toggle-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .card {
+        padding: 24px 20px;
+    }
+
+    .profile-card {
+        padding: 24px 20px;
+    }
+
+    .contact-box {
+        padding: 20px 16px;
+    }
+
+    .contact-submit-btn {
+        width: 100%;
     }
 }
 
-
-.text-background{
-        background-color: rgba(0, 0,0 , 0.5);
-      color:white;
-      padding: 10px;
-      width: 100%; }
+.text-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    width: 100%;
+}

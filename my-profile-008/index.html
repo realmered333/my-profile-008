@@ -19,12 +19,19 @@
                     <li><a href="#about" class="sparkle-btn">เกี่ยวกับฉัน</a></li>
                     <li><a href="#skills" class="sparkle-btn">ทักษะ</a></li>
                     <li><a href="#works" class="sparkle-btn">ผลงาน</a></li>
+                    <li><a href="#contact" class="sparkle-btn">ติดต่อเรา</a></li>
                 </ul>
             </nav>
+            <div class="theme-switch-wrapper">
+                <button id="themeToggleBtn" class="theme-toggle-btn sparkle-btn" type="button" aria-label="สลับโหมดสว่างและมืด" title="สลับโหมด Light / Dark">
+                    <span id="themeIcon" class="theme-icon">🌙</span>
+                    <span id="themeText" class="theme-text">Dark Mode</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="profile-card">
+    <main id="about" class="profile-card">
        <center><img class="photo" src="Photo/3185.jpg" alt="รูปโปรไฟล์"></center>
       <h1>my profile</h1>
       <p>ชื่อ-นามสกุล: <span id="fullname">ณัฐรดี ทิพวัฒน์</span></p>
@@ -73,6 +80,69 @@
                     <p>จำนวนหน้าที่ต้องการ: <span id="pagesResult" style="font-weight: bold;">-</span> หน้า</p>
                     <p>ค่าบริการรวมทั้งหมด: <span id="costResult" style="font-weight: bold;">-</span> บาท</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- ส่วนที่ 3: แบบฟอร์มติดต่อ (Contact Form) -->
+        <section id="contact" class="card">
+            <h2 class="card-title">ติดต่อฉัน (Contact Me)</h2>
+            <div class="contact-box">
+                <p class="contact-desc">
+                    หากคุณมีคำถาม ข้อเสนอแนะ หรือต้องการติดต่องาน สามารถส่งข้อความผ่านแบบฟอร์มด้านล่างนี้ได้เลยค่ะ
+                </p>
+
+                <!-- กล่องข้อความแจ้งเตือน (Alert Notification Banner) -->
+                <div id="contactAlert" class="contact-alert" style="display: none;" role="alert">
+                    <span class="alert-icon"></span>
+                    <div class="alert-content">
+                        <strong class="alert-title"></strong>
+                        <p class="alert-text"></p>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="contactName">ชื่อ-นามสกุล <span class="required-star">*</span></label>
+                        <input 
+                            type="text" 
+                            id="contactName" 
+                            name="name" 
+                            class="form-control" 
+                            placeholder="เช่น ณัฐรดี ทิพวัฒน์" 
+                            autocomplete="name"
+                        />
+                        <span class="form-error" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">อีเมล <span class="required-star">*</span></label>
+                        <input 
+                            type="email" 
+                            id="contactEmail" 
+                            name="email" 
+                            class="form-control" 
+                            placeholder="เช่น ploy@example.com" 
+                            autocomplete="email"
+                        />
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage">ข้อความ <span class="required-star">*</span></label>
+                        <textarea 
+                            id="contactMessage" 
+                            name="message" 
+                            rows="4" 
+                            class="form-control" 
+                            placeholder="พิมพ์ข้อความที่คุณต้องการติดต่อที่นี่..."
+                        ></textarea>
+                        <span class="form-error" id="messageError"></span>
+                    </div>
+
+                    <button type="submit" id="contactSubmitBtn" class="greetingBtn contact-submit-btn">
+                        ส่งข้อความ
+                    </button>
+                </form>
             </div>
         </section>
 
